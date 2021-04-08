@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS dari website kemensos.go.id -->
+    <link rel="stylesheet" href="{% static 'css/kemensos/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/kemensos/css/jquery.fancybox.css' %}">
+    <link rel="stylesheet" href="{% static 'css/kemensos/css/jcarousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/kemensos/css/flexslider.css' %}">
+    <link rel="stylesheet" href="{% static 'css/kemensos/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/kemensos/css/color.css' %}">
+    <link rel="stylesheet" href="{% static 'css/kemensos/css/main.css' %}">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- End Font Awesome -->
+    
+    <!-- Logo title kemensos -->
+    <link href="https://kemensos.go.id/uploads/settings/15642300229206.png" rel="shortcut icon"type="image/png">
+    <link href="https://kemensos.go.id/uploads/settings/15642300226502.png" rel="apple-touch-icon">
+    <link href="https://kemensos.go.id/uploads/settings/15642300226502.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="https://kemensos.go.id/uploads/settings/15642300226502.png" rel="apple-touch-icon" sizes="114x114">
+    <link href="https://kemensos.go.id/uploads/settings/15642300226502.png" rel="apple-touch-icon" sizes="144x144">
+    <!-- End Logo title kemensos -->
+    <title>UKPBJ Kementerian Sosial RI</title>
+    
+
+</head>
+
+<body class="js boxed-layout" style="  background-attachment: fixed;background-image:url({% static 'images/kemensos/images/p14.png' %}">
+    <div id="wrapper">
+    <!-- start header -->
+        <header>
+            <div class="site-top">
+                <div class="container">
+                    <div>
+                        <div class="pull-left">
+                            <i class="fa fa-phone"></i></i> 
+                            &nbsp;<ahref="tel:021-3100470"><spandir="ltr">021-3103591 &nbsp; Ext : 2107</span></a>
+                            <span class="top-email">&nbsp; | &nbsp;
+                            <i class="fa fa-envelope"></i> &nbsp;<ahref="mailto:ukpbj@kemsos.go.id">ukpbj@kemsos.go.id</a>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="navbar navbar-default">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="https://kemensos.go.id"><img alt="" src="{% static 'images/kemensos/images/ukpbj1.png'  %}"></a>
+                    </div>
+
+                    <div class="navbar-collapse collapse ">
+                        <ul class="nav navbar-nav">
+                            <li><a href="index.html">Beranda</a></li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="true">Profil<i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="visimisi.html">Visi & Misi</a></li>
+                                    <li><a href="tugasfungsi.html">Tugas & Fungsi</a></li>
+                                    <li><a href="strukturorganisasi.html">Struktur Organisasi</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="sop.html">Proses Bisnis dan SOP</a></li>
+                            <li><a href="standardokumen.html">Standar Dokumen</a></li>
+                            <li><a href="home">Regulasi</a></li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="true">Galeri<i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="foto.html">Foto</a></li>
+                                    <li><a href="video.html">Video</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="kontak.html">Kontak Kami</a></li>
+                        </ul>
+                    </div>
+                </div>
+        </header>
+    <!-- End header -->
+
+    {% block content %}
+
+
+
+	{% endblock %}
+     <!-- start footer -->
+     <footer >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="widget contacts">
+                        <h4 class="widgetheading"><i class="fa fa-phone-square"></i>&nbsp; Detail Kontak</h4>
+                        <address><strong>Alamat:</strong><br><i class="fa fa-map-marker"></i>&nbsp;Jl. Salemba Raya No. 28, Jakarta Pusat</address>
+                        <p><strong>Hubungi kami:</strong><br><i class="fa fa-phone"></i> &nbsp;<a href="tel:021-3103591"><span dir="ltr">021-3103591 Ext : 2107</span></a></p>
+                        <p><strong>Email:</strong><br><i class="fa fa-envelope"></i> &nbsp;<a href="mailto:ukpbj@kemsos.go.id">ukpbj@kemsos.go.id</a></p>
+                    </div> 
+                </div>
+                <div class="col-lg-4">
+                    <div class="widget">
+                        <h4 class="widgetheading"><i class="fa fa-rss"></i>&nbsp; Berita Terkini</h4>
+                            <ul class="link-list">
+                                <li><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident nulla, nobis repellendus quidem natus mollitia optio ipsam reiciendis, dolorum doloribus quis totam, corporis culpa voluptatibus pariatur dolore reprehenderit odio quas!</a></li>
+                                <li><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo amet voluptatem dicta ullam quod, voluptate aut est iste rem. At enim facilis est fuga illum dolores ad dolor corrupti. Veritatis?</a></li>
+                                <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, molestiae praesentium. Tenetur ipsum est maiores dolore cumque, iusto ex hic soluta totam similique eaque, quaerat laboriosam architecto reprehenderit magni suscipit.</a></li>
+                            </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="widget">
+                        <h4 class="widgetheading"><i class="fa fa-bookmark"></i>&nbsp; Menu Utama</h4>
+                            <ul class="link-list">
+                                <li><a href="#">Beranda</a></li>                                                                                                             
+                                <li><a href="#">Profil</a></li>                                                                                                        
+                                <li><a href="#">Proses Bisnis dan SOP</a></li>                                                                                                          
+                                <li><a href="#">Regulasi</a></li>
+                                <li><a href="#">Infografis</a></li>
+                                <li><a href="#">Galeri</a></li>
+                                <li><a href="contact">Kontak Kami</a></li>
+                            </ul>
+                    </div>
+                </div>
+        </div>
+        </div>
+        <div id="sub-footer">
+            <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="copyright">&copy; 2021 Seluruh hak cipta. <a>Kementerian Sosial Republik Indonesia</a>
+                        </div>
+                    </div>
+                <div class="col-lg-6">
+                    <ul class="social-network">
+                        <li><a href="#" data-placement="top" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" data-placement="top" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#" data-placement="top" title="Youtube" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
+                        <li><a href="#" data-placement="top" title="Instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+        </footer>
+        <!-- end footer -->
+        </div>
+    
+        
+        <!-- Start Javascript -->
+        <script src="https://kemensos.go.id/frontEnd/js/jquery.flexslider.js"></script>
+        <script src="https://kemensos.go.id/frontEnd/js/jquery.js"></script>
+        <script src="https://kemensos.go.id/frontEnd/js/jquery.easing.1.3.js"></script>
+        <script src="https://kemensos.go.id/frontEnd/js/bootstrap.min.js"></script>
+        <script src="https://kemensos.go.id/frontEnd/js/jquery.fancybox.pack.js"></script>
+        <script src="https://kemensos.go.id/frontEnd/js/jquery.fancybox-media.js"></script>
+        <script src="https://kemensos.go.id/frontEnd/js/google-code-prettify/prettify.js"></script>
+        <script src="https://kemensos.go.id/frontEnd/js/portfolio/jquery.quicksand.js"></script>
+        <script src="https://kemensos.go.id/frontEnd/js/portfolio/setting.js"></script>
+        <script src="https://kemensos.go.id/frontEnd/js/jquery.flexslider.js"></script>
+        <script src="https://kemensos.go.id/frontEnd/js/animate.js"></script>
+        <script src="https://kemensos.go.id/frontEnd/js/custom.js"></script>
+        <!-- End Javascript -->
+    </body>
+    </html>
