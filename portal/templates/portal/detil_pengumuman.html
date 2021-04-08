@@ -41,6 +41,12 @@
                                 <div dir="ltr"></div>
                                 <p>{{detil_pengumuman.description}}</p>
                             </div>
+                            {% if detil_pengumuman.files %}
+                            <div dir="ltr"><br>
+                                <div dir="ltr"></div>
+                                <a href="{{detil_pengumuman.files.url}}" class="fa fa-file"> {{detil_pengumuman.files}}</a>
+                            </div>
+                            {% endif %}
                         </article>
                     </div>
                 </div>

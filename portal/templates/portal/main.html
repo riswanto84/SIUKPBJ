@@ -66,7 +66,7 @@
 
                     <div class="navbar-collapse collapse ">
                         <ul class="nav navbar-nav">
-                            <li><a href="index.html">Beranda</a></li>
+                            <li><a href="{% url 'home' %}">Beranda</a></li>
                             <li class="dropdown">
                                 <a href="javascript:void(0)" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="true">Profil<i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
@@ -123,7 +123,7 @@
                     <div class="widget">
                         <h4 class="widgetheading"><i class="fa fa-bookmark"></i>&nbsp; Menu Utama</h4>
                             <ul class="link-list">
-                                <li><a href="#">Beranda</a></li>                                                                                                             
+                                <li><a href="{% url 'home' %}">Beranda</a></li>                                                                                                             
                                 <li><a href="#">Profil</a></li>                                                                                                        
                                 <li><a href="#">Proses Bisnis dan SOP</a></li>                                                                                                          
                                 <li><a href="#">Regulasi</a></li>
