@@ -41,12 +41,12 @@
                                 <div dir="ltr"></div>
                                 <p>{{detil_pengumuman.description}}</p>
                             </div>
-                            {% if detil_pengumuman.files %}
+                            {% for file in files %}
                             <div dir="ltr"><br>
                                 <div dir="ltr"></div>
-                                <a href="{{detil_pengumuman.files.url}}" class="fa fa-file"> {{detil_pengumuman.files}}</a>
+                                <a href="{{file.files.url}}" class="fa fa-file"></a>
                             </div>
-                            {% endif %}
+                            {% endfor %}
                         </article>
                     </div>
                 </div>

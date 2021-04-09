@@ -6,3 +6,4 @@ from .models import *
 
 admin.site.register(Banner)
 admin.site.register(Pengumuman)
+admin.site.register(PengumumanFiles)
