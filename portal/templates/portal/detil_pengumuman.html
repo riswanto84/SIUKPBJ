@@ -41,10 +41,16 @@
                                 <div dir="ltr"></div>
                                 <p>{{detil_pengumuman.description}}</p>
                             </div>
+                            {% if files %}
+                            <div dir="ltr"><br>
+                                <div dir="ltr"></div>
+                                <h5>File tautan : </h5>
+                            </div>
+                            {% endif %}
                             {% for file in files %}
                             <div dir="ltr"><br>
                                 <div dir="ltr"></div>
-                                <a href="{{file.files.url}}" class="fa fa-file"></a>
+                                <a href="{{file.files.url}}" class="fa fa-file"> {{ file.files.url|cut:"/images/files/" }}</a>
                             </div>
                             {% endfor %}
                         </article>
