@@ -24,10 +24,48 @@ class Pengumuman(models.Model):
         return self.title
 
 
-class PengumumanFiles(models.Model):
+class PengumumanFile(models.Model):
     pengumuman = models.ForeignKey(Pengumuman, on_delete=models.CASCADE)
     files = models.FileField(
         max_length=255, upload_to='files/', blank=True, null=True)
 
     def __str__(self):
         return self.pengumuman.title
+
+class Berita(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    image = models.ImageField(null=True, blank=True)
+    created_date = models.DateTimeField(auto_now_add=True, null=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+
+class BeritaFile(models.Model):
+    berita = models.ForeignKey(Berita, on_delete=models.CASCADE)
+    files = models.FileField(
+        max_length=255, upload_to='files/', blank=True, null=True)
+
+    def __str__(self):
+        return self.berita.title
+
+class LinkApp(models.Model):
+    title = models.CharField(max_length=200)
+    link = models.CharField(max_length=500)
+    thumbnailImage = models.ImageField(null=False, blank=False)
+
+    def __str__(self):
+        return self.title
+
+class Visi(models.Model):
+    visi = models.TextField()
+
+    def __str__(self):
+        return self.visi
+
+class Misi(models.Model):
+    misi = models.TextField()
+
+    def __str__(self):
+        return self.misi

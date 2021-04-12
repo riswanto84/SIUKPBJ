@@ -43,6 +43,7 @@
                             </div>
                             {% endfor %}
                         </div>
+                        <br>
                     </div>
                 </div>
             </div>
@@ -55,40 +56,24 @@
                             <h2 class="heading white">Berita Terkini</h2>
                             <small></small>
                         </div>
+                        
                         <div class="row">
+                            {% for kontenberita in berita %}
                             <div class="col-lg-4">
-                                <h4 class="white"><a class="white" href="#">Kegiatan Sosialisasi Peraturan Presiden Nomor 12 Tahun 2021</a></h4>
-                                <img src="https://kemensos.go.id/uploads/topics/16152769748171.jfif" alt="Kegiatan Sosialisasi Peraturan Presiden Nomor 12 Tahun 2021"/>
-                                <p class="text-justify">
-                                    <br>Jakarta (09 Maret 2021) - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis tenetur officia, doloribus quo ipsum molestias velit ducimus quia repellat nihil alias, sint quos optio enim eligendi aliquid saepe. Veritatis, alias...
-                                    &nbsp;<a href="#">Baca lebih lanjut
-                                    <i class="fa fa-caret-right"></i></a>
+                                <h4 class="white"><a class="white" href="#">{{kontenberita.title}}</a></h4>
+                                <a href="{% url 'detil_berita' kontenberita.id %}"><img src="{{kontenberita.image.url}}" alt="{{kontenberita.title}}"/></a>
+                                <p class="text-justify"><br>{{kontenberita.description|truncatechars:350}}&nbsp;
+                                    <a href="{% url 'detil_berita' kontenberita.id %}"> lebih lanjut <i class="fa fa-caret-right"></i></a>
                                 </p>
                             </div>
-                            <div class="col-lg-4">
-                                <h4 class="white"><a class="white" href="#">Bimbingan Teknis Tender Pekerjaan Konstruksi</a></h4>
-                                <img src="https://kemensos.go.id/uploads/topics/16152769748171.jfif" alt="Bimbingan Teknis Tender Pekerjaan Konstruksi"/>
-                                <p class="text-justify">
-                                    <br>Bandung (09 April 2021) - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis tenetur officia, doloribus quo ipsum molestias velit ducimus quia repellat nihil alias, sint quos optio enim eligendi aliquid saepe. Veritatis, alias...
-                                    &nbsp;<a href="#">Baca lebih lanjut
-                                    <i class="fa fa-caret-right"></i></a>
-                                </p>
-                            </div>
-                            <div class="col-lg-4">
-                                <h4 class="white"><a class="white" href="#">Launching Aplikasi Sistem Informasi Layanan Tender (SIUT)</a></h4>
-                                <img src="https://kemensos.go.id/uploads/topics/16152769748171.jfif" alt="Launching Aplikasi Sistem Informasi Layanan Tender (SIUT)"/>
-                                <p class="text-justify">
-                                    <br>Surabaya (19 Mei 2021) - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis tenetur officia, doloribus quo ipsum molestias velit ducimus quia repellat nihil alias, sint quos optio enim eligendi aliquid saepe. Veritatis, alias...
-                                    &nbsp;<a href="#">Baca lebih lanjut
-                                    <i class="fa fa-caret-right"></i></a>
-                                </p>
-                            </div>
-                        </div>                                                                    
+                            {% endfor %}
+                        </div>
+                                                                                           
 
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="more-btn">
-                            <a href="https://kemensos.go.id/ar/berita-terkini" class="btn btn-theme"><i class="fa fa-angle-left"></i>&nbsp; Lihat Lainnya &nbsp;<i class="fa fa-angle-right"></i></a>
+                            <a href="{% url 'berita' %}" class="btn btn-theme"><i class="fa fa-angle-left"></i>&nbsp; Lihat Lainnya &nbsp;<i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -98,11 +83,10 @@
         </section>
         <section class="content-row-no-bg top-line">
             <div class="container">
-
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="home-row-head">
-                            <h2 class="heading">Tautan Terkait</h2>
+                            <h2 class="heading">Tautan Terkait </h2>
                             <small></small>
                         </div>
                     </div>
@@ -112,75 +96,51 @@
                         <div class="carousel-inner">
                             <div class="item active">
                                 <ul class="thumbnails">
+                                    {% for link in link_app1 %}
                                     <li class="col-sm-2" id="noshow">
                                         <div>
                                             <div class="thumbnail"  id="noshow">
-                                                <a href="#" target="_blank">
-                                                    <img src="{% static 'images/kemensos/images/sirup.png' %}" width=229 height=103 data-placement="bottom" title="Sistem Informasi Rencana Umum Pengadaan" alt="Sistem Informasi Rencana Umum Pengadaan">
+                                                <a href="{{link.link}}" target="_blank">
+                                                    <img src="{{link.thumbnailImage.url}}" class="img-responsive" data-placement="bottom" title="{{link.title}}" alt="{{link.title}}">
                                                 </a>
                                             </div>
                                         </div>
                                         <br>
                                         <br>
                                     </li>
-                                    <li class="col-sm-2" id="noshow">
-                                        <div>
-                                            <div class="thumbnail"  id="noshow">
-                                                <a href="#" target="_blank">
-                                                    <img src="{% static 'images/kemensos/images/simpel.png' %}" data-placement="bottom" title="Sistem Informasi Pengadaan Langsung" alt="Sistem Informasi Pengadaan Langsung">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <br>
-                                    </li>
-                                    <li class="col-sm-2" id="noshow">
-                                        <div>
-                                            <div class="thumbnail"  id="noshow">
-                                                <a href="#" target="_blank">
-                                                    <img src="{% static 'images/kemensos/images/lpse.png' %}" data-placement="bottom" title="Layanan Pengadaan Secara Elektronik" alt="Layanan Pengadaan Secara Elektronik">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <br>
-                                    </li>
-                                    <li class="col-sm-2" id="noshow">
-                                        <div>
-                                            <div class="thumbnail"  id="noshow">
-                                                <a href="#" target="_blank">
-                                                    <img src="assets/images/kemsos.png" data-placement="bottom" title="kemsos.go.id" alt="kemsos.go.id">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <br>
-                                    </li>
-                                    <li class="col-sm-2" id="noshow">
-                                        <div>
-                                            <div class="thumbnail"  id="noshow">
-                                                <a href="#" target="_blank">
-                                                    <img src="assets/images/siut.png" data-placement="bottom" title="Sistem Informasi Usulan Tender" alt="Sistem Informasi Usulan Tender">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <br>
-                                    </li>
-                                    <li class="col-sm-2" id="noshow">
-                                        <div>
-                                            <div class="thumbnail"  id="noshow">
-                                                <a href="#" target="_blank">
-                                                    <img src="assets/images/inaproc.png" data-placement="bottom" title="Sistem Informasi Rencana Umum Pengadaan" alt="Sistem Informasi Rencana Umum Pengadaan">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <br>
-                                    </li>                                                                                
+                                    {% endfor %}                                          
                                 </ul>
                             </div><!-- /Slide -->
+
+                            <div class="item">
+                                <ul class="thumbnails">
+                                    {% for link in link_app2 %}
+                                    <li class="col-sm-2" id="noshow">
+                                        <div>
+                                            <div class="thumbnail"  id="noshow">
+                                                <a href="{{link.link}}" target="_blank">
+                                                    <img src="{{link.thumbnailImage.url}}" class="img-responsive" data-placement="bottom" title="{{link.title}}" alt="{{link.title}}">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <br>
+                                    </li>
+                                    {% endfor %}                                                                 
+                                </ul>
+                            </div><!-- /Slide -->
+                                
                         </div>
+                        <nav>
+                            <ul class="control-box pager">
+                                <li><a data-slide="prev" href="https://kemensos.go.id/#myCarousel" class=""><i class="fa fa-angle-left"></i></a></li>
+                                
+                                
+                                <li><a data-slide="next" href="https://kemensos.go.id/#myCarousel" class=""><i class="fa fa-angle-right"></i></a></li>
+                            </ul>
+                        </nav>
+                        <!-- /.control-box -->
+
                     </div><!-- /#myCarousel -->
                 </div>
 

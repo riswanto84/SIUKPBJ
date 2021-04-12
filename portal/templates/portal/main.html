@@ -15,10 +15,15 @@
     <link rel="stylesheet" href="{% static 'css/kemensos/css/jquery.fancybox.css' %}">
     <link rel="stylesheet" href="{% static 'css/kemensos/css/jcarousel.css' %}">
     <link rel="stylesheet" href="{% static 'css/kemensos/css/flexslider.css' %}">
-    <link href="https://kemensos.go.id/frontEnd/css/style.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://kemensos.go.id/frontEnd/css/style.css">
     <link rel="stylesheet" href="{% static 'css/kemensos/css/color.css' %}">
     <link rel="stylesheet" href="{% static 'css/kemensos/css/main.css' %}">
+    <!-- End CSS dari website kemensos.go.id -->
     
+    <!-- Data Tables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+    <!-- End Data Tables -->
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- End Font Awesome -->
@@ -70,7 +75,7 @@
                             <li class="dropdown">
                                 <a href="javascript:void(0)" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="true">Profil<i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="visimisi.html">Visi & Misi</a></li>
+                                    <li><a href="{% url 'visi_misi' %}">Visi & Misi</a></li>
                                     <li><a href="tugasfungsi.html">Tugas & Fungsi</a></li>
                                     <li><a href="strukturorganisasi.html">Struktur Organisasi</a></li>
                                 </ul>
@@ -101,7 +106,7 @@
      <footer >
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-8">
                     <div class="widget contacts">
                         <h4 class="widgetheading"><i class="fa fa-phone-square"></i>&nbsp; Detail Kontak</h4>
                         <address><strong>Alamat:</strong><br><i class="fa fa-map-marker"></i>&nbsp;Jl. Salemba Raya No. 28, Jakarta Pusat</address>
@@ -111,23 +116,12 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="widget">
-                        <h4 class="widgetheading"><i class="fa fa-rss"></i>&nbsp; Berita Terkini</h4>
-                            <ul class="link-list">
-                                <li><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident nulla, nobis repellendus quidem natus mollitia optio ipsam reiciendis, dolorum doloribus quis totam, corporis culpa voluptatibus pariatur dolore reprehenderit odio quas!</a></li>
-                                <li><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo amet voluptatem dicta ullam quod, voluptate aut est iste rem. At enim facilis est fuga illum dolores ad dolor corrupti. Veritatis?</a></li>
-                                <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, molestiae praesentium. Tenetur ipsum est maiores dolore cumque, iusto ex hic soluta totam similique eaque, quaerat laboriosam architecto reprehenderit magni suscipit.</a></li>
-                            </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="widget">
                         <h4 class="widgetheading"><i class="fa fa-bookmark"></i>&nbsp; Menu Utama</h4>
                             <ul class="link-list">
                                 <li><a href="{% url 'home' %}">Beranda</a></li>                                                                                                             
-                                <li><a href="#">Profil</a></li>                                                                                                        
+                                <li><a href="{% url 'visi_misi' %}">Visi & Misi</a></li>                                                                                                      
                                 <li><a href="#">Proses Bisnis dan SOP</a></li>                                                                                                          
                                 <li><a href="#">Regulasi</a></li>
-                                <li><a href="#">Infografis</a></li>
                                 <li><a href="#">Galeri</a></li>
                                 <li><a href="contact">Kontak Kami</a></li>
                             </ul>
@@ -171,6 +165,17 @@
         <script src="https://kemensos.go.id/frontEnd/js/jquery.flexslider.js"></script>
         <script src="https://kemensos.go.id/frontEnd/js/animate.js"></script>
         <script src="https://kemensos.go.id/frontEnd/js/custom.js"></script>
+
+        <!-- Start Data Tables -->
+        
+        <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('#tabel-data').DataTable();
+            });
+        </script>
+        <!-- End Data Tables -->
+
         <!-- End Javascript -->
     </body>
     </html>
