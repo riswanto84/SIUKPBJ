@@ -24,7 +24,7 @@
                     <article>
                         <div dir="ltr">
                             <div dir="ltr"></div>
-                                <h2>Proses Bisnis dan SOP UKPBJ</h2>
+                                <h2>Proses Bisnis dan SOP UKPBJ Kementerian Sosial</h2>
                                 <div dir="ltr"></div>
                                 <p>Proses bisnis Unit Kerja Pengadaan Barang/Jasa (UKPBJ) Kementerian Sosial disusun berdasarkan Peraturan Menteri Pendayagunaan Aparatur Negara dan Reformasi Birokrasi 
                                     <a href="https://jdih.menpan.go.id/puu-805-Peraturan%20Menpan.html" target="_blank">Nomor 19 Tahun 2018</a> tentang Penyusunan Peta Proses Bisnis Instansi Pemerintah.
@@ -52,9 +52,9 @@
                                             <td>{{probis.description}}</td>
                                             <td>
                                                 <ul style="list-style-type: none;">
-                                                    
-                                                    <li><a href="" class="fa fa-file-pdf-o"> nama file sop</a></li>
-                                                    
+                                                    {% for i in probis.sop_set.all %}
+                                                    <li><a href="{{i.file.url}}" target="_blank" class="fa fa-file-pdf-o"> {{i.title}}</a></li>
+                                                    {% endfor %}
                                                 </ul>
                                             </td>
                                         </tr>

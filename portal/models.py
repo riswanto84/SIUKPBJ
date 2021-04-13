@@ -103,3 +103,19 @@ class SOP(models.Model):
 
     def __str__(self):
         return self.title
+
+class StandarDokumen(models.Model):
+    title = models.CharField(max_length=500)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+class StandarDokumenFile(models.Model):
+    title = models.CharField(max_length=500)
+    file = models.FileField(max_length=255, upload_to='files/', blank=True, null=True)
+    dokumen = models.ForeignKey(StandarDokumen, on_delete=models.SET_NULL, null=True, blank=True)
+
+    def __str__(self):
+        return self.dokumen.title
+    

@@ -24,5 +24,8 @@ urlpatterns = [
      # path untuk probis dan SOP
      path('probis_sop/', views.probis_sop, name='probis_sop'),
 
+     # path untuk standar dokumen
+     path('standardokumen/', views.standar_dokumen, name='standar_dokumen'),
+
 
 ]

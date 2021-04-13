@@ -94,8 +94,18 @@ def struktur_organisasi(request):
 
 def probis_sop(request):
     prosesbisnis = Probis.objects.all()
+    sop = SOP.objects.all()
     context = {
         'prosesbisnis': prosesbisnis,
     }
 
     return render(request, 'portal/probis_sop.html', context)
+
+def standar_dokumen(request):
+    standar_dokumen = StandarDokumen.objects.all()
+    dokumen = StandarDokumenFile.objects.all()
+    context = {
+        'standar_dokumen': standar_dokumen,
+    }
+
+    return render(request, 'portal/standar_dokumen.html', context)
