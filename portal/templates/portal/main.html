@@ -76,20 +76,14 @@
                                 <a href="javascript:void(0)" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="true">Profil<i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{% url 'visi_misi' %}">Visi & Misi</a></li>
-                                    <li><a href="tugasfungsi.html">Tugas & Fungsi</a></li>
-                                    <li><a href="strukturorganisasi.html">Struktur Organisasi</a></li>
+                                    <li><a href="{% url 'tugas_kewenangan' %}">Tugas & Kewenangan</a></li>
+                                    <li><a href="{% url 'struktur_organisasi' %}">Struktur Organisasi</a></li>
                                 </ul>
                             </li>
-                            <li><a href="sop.html">Proses Bisnis dan SOP</a></li>
+                            <li><a href="{% url 'probis_sop' %}">Proses Bisnis dan SOP</a></li>
                             <li><a href="standardokumen.html">Standar Dokumen</a></li>
                             <li><a href="home">Regulasi</a></li>
-                            <li class="dropdown">
-                                <a href="javascript:void(0)" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="true">Galeri<i class="fa fa-angle-down"></i></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="foto.html">Foto</a></li>
-                                    <li><a href="video.html">Video</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="home">Galeri</a></li>
                             <li><a href="kontak.html">Kontak Kami</a></li>
                         </ul>
                     </div>
@@ -120,9 +114,10 @@
                             <ul class="link-list">
                                 <li><a href="{% url 'home' %}">Beranda</a></li>                                                                                                             
                                 <li><a href="{% url 'visi_misi' %}">Visi & Misi</a></li>
-                                <li><a href="#">Tugas & Fungsi</a></li>
-                                <li><a href="#">Struktur Organisasi</a></li>                                                                                                    
-                                <li><a href="#">Proses Bisnis dan SOP</a></li>                                                                                                          
+                                <li><a href="{% url 'tugas_kewenangan' %}">Tugas & Kewenangan</a></li>
+                                <li><a href="{% url 'struktur_organisasi' %}">Struktur Organisasi</a></li>                                                                                                    
+                                <li><a href="{% url 'probis_sop' %}">Proses Bisnis dan SOP</a></li>
+                                <li><a href="#">Standar Dokumen</a></li>                                                                                                          
                                 <li><a href="#">Regulasi</a></li>
                                 <li><a href="#">Galeri</a></li>
                                 <li><a href="contact">Kontak Kami</a></li>

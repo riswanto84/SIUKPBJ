@@ -26,8 +26,7 @@ class Pengumuman(models.Model):
 
 class PengumumanFile(models.Model):
     pengumuman = models.ForeignKey(Pengumuman, on_delete=models.CASCADE)
-    files = models.FileField(
-        max_length=255, upload_to='files/', blank=True, null=True)
+    files = models.FileField(max_length=255, upload_to='files/', blank=True, null=True)
 
     def __str__(self):
         return self.pengumuman.title
@@ -44,8 +43,7 @@ class Berita(models.Model):
 
 class BeritaFile(models.Model):
     berita = models.ForeignKey(Berita, on_delete=models.CASCADE)
-    files = models.FileField(
-        max_length=255, upload_to='files/', blank=True, null=True)
+    files = models.FileField(max_length=255, upload_to='files/', blank=True, null=True)
 
     def __str__(self):
         return self.berita.title
@@ -69,3 +67,39 @@ class Misi(models.Model):
 
     def __str__(self):
         return self.misi
+
+class TugasUKPBJ(models.Model):
+    tugas = models.TextField()
+    
+    def __str__(self):
+        return self.tugas
+
+class KewenanganUKPBJ(models.Model):
+    kewenangan = models.TextField()
+    
+    def __str__(self):
+        return self.kewenangan
+
+class StrukturOrganisasi(models.Model):
+    title = models.CharField(max_length=500)
+    gambar = models.ImageField(null=False, blank=False)
+
+    def __str__(self):
+        return self.title
+
+class Probis(models.Model):
+    title = models.CharField(max_length=500)
+    description = models.TextField()
+    file = models.FileField(max_length=255, upload_to='files/', blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+class SOP(models.Model):
+    title = models.CharField(max_length=500)
+    description = models.TextField()
+    file = models.FileField(max_length=255, upload_to='files/', blank=True, null=True)
+    probis = models.ForeignKey(Probis, on_delete=models.SET_NULL, null=True, blank=True)
+
+    def __str__(self):
+        return self.title

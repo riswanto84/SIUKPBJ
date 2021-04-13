@@ -22,20 +22,15 @@
             <div class="row">
                 <div class="col-lg-12">
                     <article>
-                        <div class="post-image">
-                            <div class="post-heading">
-                                <h1>Visi & Misi</h1>
-                            </div>
-                        </div>
                         <div dir="ltr">
-                            <br><h4>Visi</h4>
+                            <br><h2>Visi</h2>
                             <div dir="ltr"></div>
                             {% for i in visi %}
-                            <p>{{i.visi}}</p>
+                            <h4>{{i.visi}}</h4>
                             {% endfor %}
                         </div>
                         <div dir="ltr">
-                            <br><h4>Misi</h4>
+                            <br><h2>Misi</h2>
                             <div dir="ltr"></div>
                             {% for i in misi %}
                             <p>{{ forloop.counter }}. {{i.misi}}</p>

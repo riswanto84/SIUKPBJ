@@ -11,8 +11,10 @@ def home(request):
     pengumuman = Pengumuman.objects.order_by('-id')[:3]
     berita = Berita.objects.order_by('-id')[:3]
     beritafooter = Berita.objects.order_by('-id')[:5]
-    link_app1 = LinkApp.objects.all().order_by('-id')[:6]
-    link_app2 = LinkApp.objects.order_by('id')[6:10]
+
+    #query link aplikasi pada footer
+    link_app1 = LinkApp.objects.all().order_by('id')[:6] 
+    link_app2 = LinkApp.objects.all().order_by('id')[6:10]
 
     context = {
         'banners': banners,
@@ -70,3 +72,30 @@ def visi_misi(request):
     }
 
     return render(request, 'portal/visimisi.html', context)
+
+
+def tugas_kewenangan(request):
+    tugas = TugasUKPBJ.objects.all()
+    kewenangan = KewenanganUKPBJ.objects.all()
+    context = {
+        'tugas': tugas,
+        'kewenangan': kewenangan,
+    }
+
+    return render(request, 'portal/tugas_kewenangan.html', context)
+
+def struktur_organisasi(request):
+    gambarstrukturOrganisasi = StrukturOrganisasi.objects.all()
+    context = {
+        'gambarstrukturOrganisasi': gambarstrukturOrganisasi,
+    }
+    
+    return render(request, 'portal/struktur_organisasi.html', context)
+
+def probis_sop(request):
+    prosesbisnis = Probis.objects.all()
+    context = {
+        'prosesbisnis': prosesbisnis,
+    }
+
+    return render(request, 'portal/probis_sop.html', context)

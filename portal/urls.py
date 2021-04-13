@@ -12,6 +12,17 @@ urlpatterns = [
      path('detailberita/<int:detil_id>/', views.detil_berita, name='detil_berita'),
      path('berita/', views.all_berita, name='berita'),
 
-     #path untuk visi dan misi
+     # path untuk visi dan misi
      path('visimisi/', views.visi_misi, name='visi_misi'),
+
+     # path untuk tugas dan fungsi
+     path('tugaskewenangan/', views.tugas_kewenangan, name='tugas_kewenangan'),
+
+     # path untuk struktur organisasi
+     path('strukturorganisasi/', views.struktur_organisasi, name='struktur_organisasi'),
+
+     # path untuk probis dan SOP
+     path('probis_sop/', views.probis_sop, name='probis_sop'),
+
+
 ]
