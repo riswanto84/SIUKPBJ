@@ -136,4 +136,15 @@ class SDF(models.Model):
         StandarDokumen, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
-        return self.dokumen.title
+        return self.title
+
+
+class Regulasi(models.Model):
+    nomor = models.CharField(max_length=250)
+    title = models.CharField(max_length=500)
+    description = models.TextField()
+    file = models.FileField(
+        max_length=255, upload_to='files/')
+
+    def __str__(self):
+        return self.title

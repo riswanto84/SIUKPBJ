@@ -112,3 +112,26 @@ def standar_dokumen(request):
         'standar_dokumen': standar_dokumen,
     }
     return render(request, 'portal/standar_dokumen.html', context)
+
+
+def regulasi(request):
+    regulasi = Regulasi.objects.all()
+    context = {
+        'regulasi': regulasi,
+    }
+    return render(request, 'portal/regulasi.html', context)
+
+
+def materi(request):
+    konten_materi = Materi.objects.all()
+    context = {
+        'materi': konten_materi,
+    }
+    return render(request, 'portal/materi.html', context)
+
+
+def hubungi(request):
+    context = {
+
+    }
+    return render(request, 'portal/hubungi.html', context)

@@ -1,0 +1,56 @@
+{%  extends 'portal/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="contents">
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="breadcrumb">
+                        <li><a href="{% url 'home' %}"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
+                        <li class="active"><a href="{% url 'home' %}">Beranda</a> / Hubungi kami / </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4><i class="fa fa-map-marker"></i> Lokasi</h4>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.579755287075!2d106.84987604871691!3d-6.199514069012905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f55a92e59f9f%3A0xf43169fd20bd187d!2sUKPBJ%20Kementerian%20Sosial!5e0!3m2!1sid!2sid!4v1618388180663!5m2!1sid!2sid" class="col-lg-12" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12"><hr></div>
+            </div>
+            <div class="row">
+                <div class="col-md-5 contacts dark">
+                    <h4><i class="fa fa-envelope"></i> Detail Kontak</h4>
+                    <address>
+                        <i class="fa fa-map-marker"></i><strong> Alamat:</strong><br>Jl. Salemba Raya No. 28, Jakarta Pusat
+                    </address>
+                    <address>
+                        <i class="fa fa-phone"></i><strong> Telepon:</strong><br>021-3103591 Ext: 2107
+                    </address>
+                    <address>
+                        <i class="fa fa-fax"></i><strong> Fax:</strong><br>021-31900125
+                    </address>
+                    <address>
+                        <i class="fa fa-envelope"></i><strong> Email:</strong><br>ukpbj@kemsos.go.id
+                    </address>
+                    <address>
+                        <i class="fa fa-envelope"></i><strong> Jam Pelayanan:</strong><br>Senin - Jumat, 08:00 - 16:00
+                    </address>
+                </div>
+                <div class="col-md-7"></div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}
