@@ -18,5 +18,4 @@ admin.site.register(StrukturOrganisasi)
 admin.site.register(Probis)
 admin.site.register(SOP)
 admin.site.register(StandarDokumen)
-admin.site.register(StandarDokumenFile)
-
+admin.site.register(SDF)

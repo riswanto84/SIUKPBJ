@@ -30,8 +30,8 @@
                                     <thead>
                                         <tr>
                                             <th class="col-lg-4">Nama Dokumen</th>
-                                            <th class="col-lg-6">Deskripsi</th>
-                                            <th class="col-lg-2 ">Unduh</th>
+                                            <th class="col-lg-4">Deskripsi</th>
+                                            <th class="col-lg-4 ">Unduh</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -41,8 +41,8 @@
                                             <td>{{s_dokumen.description}}</td>
                                             <td>
                                                 <ul style="list-style-type: none;">
-                                                    {% for i in s_dokumen.dokumen_set.all %}
-                                                        <li><a href="{{i.file.url}}" target="_blank" class="fa fa-file-pdf-o"> tes</a></li>
+                                                    {% for i in s_dokumen.sdf_set.all %}
+                                                        <li><a href="{{i.file.url}}" target="_blank" class="fa fa-file-pdf-o"> {{i.title}}</a></li>
                                                     {% endfor %}
                                                 </ul>
                                             </td>

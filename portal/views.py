@@ -12,8 +12,8 @@ def home(request):
     berita = Berita.objects.order_by('-id')[:3]
     beritafooter = Berita.objects.order_by('-id')[:5]
 
-    #query link aplikasi pada footer
-    link_app1 = LinkApp.objects.all().order_by('id')[:6] 
+    # query link aplikasi pada footer
+    link_app1 = LinkApp.objects.all().order_by('id')[:6]
     link_app2 = LinkApp.objects.all().order_by('id')[6:10]
 
     context = {
@@ -37,6 +37,7 @@ def detil_pengumuman(request, detil_id):
     }
     return render(request, 'portal/detil_pengumuman.html', context)
 
+
 def all_pengumuman(request):
     pengumuman = Pengumuman.objects.all().order_by('-id')
     context = {
@@ -44,6 +45,7 @@ def all_pengumuman(request):
         'halaman': " / semua pengumuman",
     }
     return render(request, 'portal/pengumuman.html', context)
+
 
 def detil_berita(request, detil_id):
     detil_berita = Berita.objects.get(id=detil_id)
@@ -55,6 +57,7 @@ def detil_berita(request, detil_id):
     }
     return render(request, 'portal/detil_berita.html', context)
 
+
 def all_berita(request):
     berita = Berita.objects.all().order_by('-id')
     context = {
@@ -62,7 +65,8 @@ def all_berita(request):
         'halaman': " / semua berita",
     }
     return render(request, 'portal/berita.html', context)
-    
+
+
 def visi_misi(request):
     visi = Visi.objects.all()
     misi = Misi.objects.all()
@@ -84,28 +88,27 @@ def tugas_kewenangan(request):
 
     return render(request, 'portal/tugas_kewenangan.html', context)
 
+
 def struktur_organisasi(request):
     gambarstrukturOrganisasi = StrukturOrganisasi.objects.all()
     context = {
         'gambarstrukturOrganisasi': gambarstrukturOrganisasi,
     }
-    
+
     return render(request, 'portal/struktur_organisasi.html', context)
+
 
 def probis_sop(request):
     prosesbisnis = Probis.objects.all()
-    sop = SOP.objects.all()
     context = {
         'prosesbisnis': prosesbisnis,
     }
-
     return render(request, 'portal/probis_sop.html', context)
+
 
 def standar_dokumen(request):
     standar_dokumen = StandarDokumen.objects.all()
-    dokumen = StandarDokumenFile.objects.all()
     context = {
         'standar_dokumen': standar_dokumen,
     }
-
     return render(request, 'portal/standar_dokumen.html', context)
