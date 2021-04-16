@@ -142,7 +142,6 @@ class SDF(models.Model):
 class Regulasi(models.Model):
     nomor = models.CharField(max_length=250)
     title = models.CharField(max_length=500)
-    description = models.TextField()
     file = models.FileField(
         max_length=255, upload_to='files/')
 

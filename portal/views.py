@@ -115,7 +115,7 @@ def standar_dokumen(request):
 
 
 def regulasi(request):
-    regulasi = Regulasi.objects.all()
+    regulasi = Regulasi.objects.all().order_by('-id') #Product.objects.all().order_by('id') 
     context = {
         'regulasi': regulasi,
     }
