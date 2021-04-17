@@ -1,0 +1,1 @@
+web: gunicorn ukpbj_kemsos.wsgi --log-file -
