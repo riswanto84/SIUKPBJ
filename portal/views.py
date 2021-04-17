@@ -34,7 +34,6 @@ def detil_pengumuman(request, detil_id):
     context = {
         'detil_pengumuman': detil_pengumuman,
         'files': files,
-        'user': user,
     }
     return render(request, 'portal/detil_pengumuman.html', context)
 
