@@ -34,6 +34,7 @@ def detil_pengumuman(request, detil_id):
     context = {
         'detil_pengumuman': detil_pengumuman,
         'files': files,
+        'user': user,
     }
     return render(request, 'portal/detil_pengumuman.html', context)
 
@@ -115,7 +116,8 @@ def standar_dokumen(request):
 
 
 def regulasi(request):
-    regulasi = Regulasi.objects.all().order_by('-id') #Product.objects.all().order_by('id') 
+    regulasi = Regulasi.objects.all().order_by(
+        '-id')  # Product.objects.all().order_by('id')
     context = {
         'regulasi': regulasi,
     }

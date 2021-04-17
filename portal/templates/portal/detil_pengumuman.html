@@ -53,6 +53,10 @@
                                 <a href="{{file.files.url}}" target="_blank" class="fa fa-file"> {{ file.files.url|cut:"/images/files/" }}</a>
                             </div>
                             {% endfor %}
+                            <div dir="ltr"><br>
+                                <div dir="ltr"></div>
+                                <p>dibuat pada tanggal : {{detil_pengumuman.created_date|date:'d M Y, h:m'}}</p>
+                            </div>
                         </article>
                     </div>
                 </div>
