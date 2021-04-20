@@ -16,14 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-#SETTING STATIC FILES
+# SETTING STATIC FILES
 from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('portal.urls'))
+    path('', include('portal.urls')),
+    path('', include('adminportal.urls')),
 ]
 
-#SETTING URL PATTERN
+# SETTING URL PATTERN
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

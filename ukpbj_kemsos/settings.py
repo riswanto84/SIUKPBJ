@@ -26,7 +26,8 @@ SECRET_KEY = 'r7)6&su^9_2(b=c(6)^n=brcao7u%0hzn5jnlyn5zn+f!nzkwi'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','ppnpn.kemsos.go.id','103.94.213.87','192.168.114.87']
+ALLOWED_HOSTS = ['localhost', 'ppnpn.kemsos.go.id',
+                 '103.94.213.87', '192.168.114.87']
 
 
 # Application definition
@@ -39,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'portal'
+    'portal',
+    'adminportal',
 ]
 
 MIDDLEWARE = [
