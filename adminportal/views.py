@@ -50,3 +50,11 @@ def home(request):
         'tot_banner': tot_banner,
     }
     return render(request, 'adminportal/dashboard.html', context)
+
+
+@login_required(login_url='administrator')
+def pengumuman(request):
+    context = {
+
+    }
+    return render(request, 'adminportal/pengumuman.html', context)
