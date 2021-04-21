@@ -30,6 +30,7 @@ def logoutUser(request):
     return redirect('administrator')
 
 
+@login_required(login_url='administrator')
 def home(request):
     context = {}
     return render(request, 'adminportal/dashboard.html', context)

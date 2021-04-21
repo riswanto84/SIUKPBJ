@@ -8,5 +8,5 @@ urlpatterns = [
     path('logout/', views.logoutUser, name='logout'),
 
     # path home admin
-    path('home', views.home, name='home')
+    path('home/', views.home, name='home')
 ]
