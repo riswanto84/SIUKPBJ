@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import *
+from portal.models import *
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -32,5 +32,21 @@ def logoutUser(request):
 
 @login_required(login_url='administrator')
 def home(request):
-    context = {}
+    tot_pengumuman = Pengumuman.objects.all().count()
+    tot_berita = Berita.objects.all().count()
+    tot_aplikasi = LinkApp.objects.all().count()
+    tot_probisSOP = Probis.objects.all().count()
+    tot_stdDokumen = StandarDokumen.objects.all().count()
+    tot_regulasi = Regulasi.objects.all().count()
+    tot_banner = Banner.objects.all().count()
+
+    context = {
+        'tot_pengumuman': tot_pengumuman,
+        'tot_berita': tot_berita,
+        'tot_aplikasi': tot_aplikasi,
+        'tot_probisSOP': tot_probisSOP,
+        'tot_stdDokumen': tot_stdDokumen,
+        'tot_regulasi': tot_regulasi,
+        'tot_banner': tot_banner,
+    }
     return render(request, 'adminportal/dashboard.html', context)
