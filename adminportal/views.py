@@ -58,3 +58,11 @@ def pengumuman(request):
 
     }
     return render(request, 'adminportal/pengumuman.html', context)
+
+
+@login_required(login_url='administrator')
+def admin_pengumuman(request):
+    context = {
+
+    }
+    return render(request, 'adminportal/admin_pengumuman.html', context)
