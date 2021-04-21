@@ -62,7 +62,8 @@ def pengumuman(request):
 
 @login_required(login_url='administrator')
 def admin_pengumuman(request):
+    pengumuman = Pengumuman.objects.all()
     context = {
-
+        'pengumuman': pengumuman,
     }
     return render(request, 'adminportal/admin_pengumuman.html', context)
