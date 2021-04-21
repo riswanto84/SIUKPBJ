@@ -2,8 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # path untuk login
-    path('adminportal', views.login_page, name='adminportal'),
+    # path untuk login admin
+    path('administrator', views.login_page, name='administrator'),
     # path untuk logout
     path('logout/', views.logoutUser, name='logout'),
 

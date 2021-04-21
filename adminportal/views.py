@@ -27,7 +27,7 @@ def login_page(request):
 
 def logoutUser(request):
     logout(request)
-    return redirect('adminportal')
+    return redirect('administrator')
 
 
 def home(request):
