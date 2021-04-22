@@ -8,7 +8,7 @@ urlpatterns = [
     path('logout/', views.logoutUser, name='logout'),
 
     # path home admin
-    path('home/', views.home, name='home'),
+    path('home/', views.homeadmin, name='homeadmin'),
 
     # path pengumuman admin
     path('admin_pengumuman/', views.admin_pengumuman, name='admin_pengumuman'),

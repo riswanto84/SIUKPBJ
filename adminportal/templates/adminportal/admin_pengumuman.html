@@ -14,7 +14,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'homeadmin' %}">Home</a></li>
               <li class="breadcrumb-item active">Pengumuman</li>
             </ol>
           </div>
@@ -30,10 +30,48 @@
             <div class="card">
               <!-- /.card-header -->
               <div class="card-body">
+                  
+                      {% for message in messages %}
+                      <div class="alert alert-default-success alert-dismissible fade show" role="alert">
+                        <strong>{{message}}</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      {% endfor %}
                   <div>
-                      <button class="btn btn-info" type="submit" name="tambah">+ Tambah</button>
+                      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">+ Tambah</button>
                       <hr>
                   </div>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Tambah Pengumuman</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                            <form method="POST" enctype="multipart/form-data" action="">
+                                {% csrf_token %}
+                                {{form.as_p}}
+                                <input type="hidden" id="created_by" name="created_by" value="{{user.id}}">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                          <input type="submit" name="Submit" value="Simpan" class="btn btn-primary">
+                            </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Modal -->
+
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
@@ -49,7 +87,7 @@
                   <tr>
                     <td class="text-right">{{forloop.counter}}.</td>
                     <td class="text-center">{{i.title}}</td>
-                    <td class="text-center">{{i.created_date}}</td>
+                    <td class="text-center">{{i.created_date|date:'d M Y, h:m a'}}</td>
                     <td class="text-center"><a class="ion ion-edit text-success" href=""> ubah</a></td>
                     <td class="text-center"><a class="ion ion-android-delete text-danger" href=""> hapus</a></td>
                   </tr>

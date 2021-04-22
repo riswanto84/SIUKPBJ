@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+from .forms import *
+
 # Create your views here.
 
 
@@ -17,7 +19,7 @@ def login_page(request):
 
         if user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect('homeadmin')
         else:
             messages.info(request, 'Username atau Password tidak valid!')
 
@@ -31,7 +33,7 @@ def logoutUser(request):
 
 
 @login_required(login_url='administrator')
-def home(request):
+def homeadmin(request):
     tot_pengumuman = Pengumuman.objects.all().count()
     tot_berita = Berita.objects.all().count()
     tot_aplikasi = LinkApp.objects.all().count()
@@ -62,8 +64,20 @@ def pengumuman(request):
 
 @login_required(login_url='administrator')
 def admin_pengumuman(request):
-    pengumuman = Pengumuman.objects.all()
+
+    pengumuman = Pengumuman.objects.all().order_by('-id')
+
+    form = PengumumanForm()
+    if request.method == 'POST':
+        print('PRINTING POST:', request.POST)
+        form = PengumumanForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Data berhasil disimpan')
+            return redirect('admin_pengumuman')
+
     context = {
         'pengumuman': pengumuman,
+        'form': form,
     }
     return render(request, 'adminportal/admin_pengumuman.html', context)
