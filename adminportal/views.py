@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from .forms import *
+from django.forms import modelformset_factory
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 
@@ -69,7 +71,6 @@ def admin_pengumuman(request):
 
     form = PengumumanForm()
     if request.method == 'POST':
-        print('PRINTING POST:', request.POST)
         form = PengumumanForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
@@ -81,3 +82,22 @@ def admin_pengumuman(request):
         'form': form,
     }
     return render(request, 'adminportal/admin_pengumuman.html', context)
+
+
+@login_required(login_url='administrator')
+def lampirkan_file(request, pk):
+    pengumuman = Pengumuman.objects.all()
+
+    if request.method == 'POST':
+        data = request.POST
+        files = request.FILES.getlist('files')
+
+        file_pengumuman = Pengumuman.objects.get(id=data['pengumuman_id'])
+
+        failUpload = PengumumanFile.objects.create(
+            pengumuman_id = file_pengumuman,
+            files = files,
+        )
+    
+    
+    return render(request, 'adminportal/lampirkan_file.html')
