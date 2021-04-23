@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from .forms import *
-from django.forms import modelformset_factory
+from django.forms import modelformset_factory, inlineformset_factory
 from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
@@ -85,14 +85,18 @@ def admin_pengumuman(request):
 
 
 @login_required(login_url='administrator')
-def lampirkan_file(request, pk):
-    pengumuman = Pengumuman.objects.get(id=pk)
-    if request.method == 'POST':
-        id_pengumuman = request.POST.get("pengumuman_id")
-        lampiran_file = request.FILES.getlist("files")
-        print("id pengumuman", lampiran_file)
+def lampirkan_file(request, pengumuman_id):
+    pengumuman = Pengumuman.objects.get(id=pengumuman_id)
+    LampiranPengumumanFormset = inlineformset_factory(
+        Pengumuman, PengumumanFile, fields=('files',), can_delete=False, extra=2)
 
-    context = {
-            'pengumuman': pengumuman,
-        }
-    return render(request, 'adminportal/lampirkan_file.html', context)
+    if request.method == 'POST':
+        formset = LampiranPengumumanFormset(
+            request.POST, request.FILES, instance=pengumuman)
+        if formset.is_valid():
+            formset.save()
+            return redirect('admin_pengumuman')
+
+    formset = LampiranPengumumanFormset(instance=pengumuman)
+
+    return render(request, 'adminportal/lampirkan_file.html', {'formset': formset})

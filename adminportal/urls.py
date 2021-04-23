@@ -14,5 +14,5 @@ urlpatterns = [
     path('admin_pengumuman/', views.admin_pengumuman, name='admin_pengumuman'),
 
     # path tambahkan file
-    path('lampirkan_file/<str:pk>/', views.lampirkan_file, name='admin_lampirkan_file')
+    path('lampirkan_file/<str:pengumuman_id>/', views.lampirkan_file, name='admin_lampirkan_file')
 ]
