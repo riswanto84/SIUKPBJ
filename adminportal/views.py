@@ -86,18 +86,13 @@ def admin_pengumuman(request):
 
 @login_required(login_url='administrator')
 def lampirkan_file(request, pk):
-    pengumuman = Pengumuman.objects.all()
-
+    pengumuman = Pengumuman.objects.get(id=pk)
     if request.method == 'POST':
-        data = request.POST
-        files = request.FILES.getlist('files')
+        id_pengumuman = request.POST.get("pengumuman_id")
+        lampiran_file = request.FILES.getlist("files")
+        print("id pengumuman", lampiran_file)
 
-        file_pengumuman = Pengumuman.objects.get(id=data['pengumuman_id'])
-
-        failUpload = PengumumanFile.objects.create(
-            pengumuman_id = file_pengumuman,
-            files = files,
-        )
-    
-    
-    return render(request, 'adminportal/lampirkan_file.html')
+    context = {
+            'pengumuman': pengumuman,
+        }
+    return render(request, 'adminportal/lampirkan_file.html', context)
