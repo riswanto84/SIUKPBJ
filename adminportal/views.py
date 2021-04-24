@@ -9,6 +9,7 @@ from django.contrib import messages
 from .forms import *
 from django.forms import modelformset_factory, inlineformset_factory
 from django.core.files.storage import FileSystemStorage
+from crispy_forms.helper import FormHelper
 
 # Create your views here.
 
@@ -88,13 +89,14 @@ def admin_pengumuman(request):
 def lampirkan_file(request, pengumuman_id):
     pengumuman = Pengumuman.objects.get(id=pengumuman_id)
     LampiranPengumumanFormset = inlineformset_factory(
-        Pengumuman, PengumumanFile, fields=('files',), can_delete=False, extra=2)
+        Pengumuman, PengumumanFile, fields=('files',), can_delete=False, extra=3)
 
     if request.method == 'POST':
         formset = LampiranPengumumanFormset(
             request.POST, request.FILES, instance=pengumuman)
         if formset.is_valid():
             formset.save()
+            messages.info(request, 'Data berhasil disimpan')
             return redirect('admin_pengumuman')
 
     formset = LampiranPengumumanFormset(instance=pengumuman)
