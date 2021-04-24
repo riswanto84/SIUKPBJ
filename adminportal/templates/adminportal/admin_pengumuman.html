@@ -90,8 +90,8 @@
                     <td class="text-center">{{i.title}}</td>
                     <td class="text-center">{{i.created_date|date:'d M Y, h:m a'}}</td>
                     <td class="text-center text-success"><a class="ion ion-document-text" href="{% url 'admin_lampirkan_file' i.id %}"> lampirkan file</a></td>
-                    <td class="text-center"><a class="ion ion-edit text-success" href=""> ubah</a></td>
-                    <td class="text-center"><a class="ion ion-android-delete text-danger" href=""> hapus</a></td>
+                    <td class="text-center"><a class="ion ion-edit text-success" href="{% url 'ubah_pengumuman' i.id %}"> ubah</a></td>
+                    <td class="text-center"><a class="ion ion-android-delete text-danger" href="{% url 'delete_pengumuman' i.id %}" onclick="return confirm('Lanjutkan menghapus data?');"> hapus</a></td>
                   </tr>
                   {% endfor %}
                   </tfoot>

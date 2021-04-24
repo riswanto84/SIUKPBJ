@@ -102,3 +102,27 @@ def lampirkan_file(request, pengumuman_id):
     formset = LampiranPengumumanFormset(instance=pengumuman)
 
     return render(request, 'adminportal/lampirkan_file.html', {'formset': formset})
+
+
+@login_required(login_url='administrator')
+def delete_pengumuman(request, pk):
+    pengumuman = Pengumuman.objects.get(id=pk)
+    pengumuman.delete()
+    messages.info(request, 'Data berhasil dihapus')
+    return redirect('admin_pengumuman')
+
+
+@login_required(login_url='administrator')
+def ubah_pengumuman(request, pk):
+    pengumuman = Pengumuman.objects.get(id=pk)
+    form = PengumumanForm(instance=pengumuman)
+
+    if request.method == 'POST':
+        form = PengumumanForm(request.POST, request.FILES, instance=pengumuman)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Data berhasil diubah')
+            return redirect('admin_pengumuman')
+
+    context = {'form': form}
+    return render(request, 'adminportal/admin_pengumuman.html', context)
