@@ -34,6 +34,7 @@
                         <div class="form-group">
                             <form method="POST" enctype="multipart/form-data" action="">
                                 {% csrf_token %}
+                                {{form.media}}
                                 {{form.as_p}}
                                 <input type="hidden" id="created_by" name="created_by" value="{{user.id}}">
                                 <input type="submit" name="Submit" value="Simpan" class="btn btn-primary">

@@ -34,7 +34,7 @@
                                 <div class="box">
                                     <div class="box-gray aligncenter">
                                         <h4>{{pengumuman.title}}</h4>
-                                        <p>{{pengumuman.description|truncatechars:250}}</p>
+                                        <p>{{pengumuman.description|safe|truncatechars:250}}</p>
                                     </div>
                                     <div class="box-bottom">
                                         <a href="{% url 'detil_pengumuman' pengumuman.id %}">Lebih Detail</a>
@@ -62,7 +62,7 @@
                             <div class="col-lg-4">
                                 <h4 class="white"><a class="white" href="#">{{kontenberita.title}}</a></h4>
                                 <a href="{% url 'detil_berita' kontenberita.id %}"><img src="{{kontenberita.image.url}}" alt="{{kontenberita.title}}"/></a>
-                                <p class="text-justify"><br>{{kontenberita.description|truncatechars:350}}&nbsp;
+                                <p class="text-justify"><br>{{kontenberita.description|safe|truncatechars:350}}&nbsp;
                                     <a href="{% url 'detil_berita' kontenberita.id %}"> lebih lanjut <i class="fa fa-caret-right"></i></a>
                                 </p>
                             </div>

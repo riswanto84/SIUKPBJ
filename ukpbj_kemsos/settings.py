@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'portal',
     'adminportal',
     'crispy_forms',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [

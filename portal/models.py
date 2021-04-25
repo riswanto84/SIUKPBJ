@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from ckeditor.fields import RichTextField
+
 # Create your models here.
 
 
@@ -15,7 +17,8 @@ class Banner(models.Model):
 
 class Pengumuman(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField()
+    #description = models.TextField()
+    description = RichTextField(blank=True, null=True)
     image = models.ImageField(null=True, blank=True)
     created_date = models.DateTimeField(auto_now_add=True, null=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -35,7 +38,8 @@ class PengumumanFile(models.Model):
 
 class Berita(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField()
+    #description = models.TextField()
+    description = RichTextField(blank=True, null=True)
     image = models.ImageField(null=True, blank=True)
     created_date = models.DateTimeField(auto_now_add=True, null=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -100,7 +104,8 @@ class StrukturOrganisasi(models.Model):
 
 class Probis(models.Model):
     title = models.CharField(max_length=500)
-    description = models.TextField()
+    #description = models.TextField()
+    description = RichTextField(blank=True, null=True)
     file = models.FileField(
         max_length=255, upload_to='files/', blank=True, null=True)
 
@@ -110,7 +115,8 @@ class Probis(models.Model):
 
 class SOP(models.Model):
     title = models.CharField(max_length=500)
-    description = models.TextField()
+    #description = models.TextField()
+    description = RichTextField(blank=True, null=True)
     file = models.FileField(
         max_length=255, upload_to='files/', blank=True, null=True)
     probis = models.ForeignKey(
@@ -122,7 +128,8 @@ class SOP(models.Model):
 
 class StandarDokumen(models.Model):
     title = models.CharField(max_length=500)
-    description = models.TextField()
+    #description = models.TextField()
+    description = RichTextField(blank=True, null=True)
 
     def __str__(self):
         return self.title
