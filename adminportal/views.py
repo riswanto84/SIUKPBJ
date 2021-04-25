@@ -125,4 +125,4 @@ def ubah_pengumuman(request, pk):
             return redirect('admin_pengumuman')
 
     context = {'form': form}
-    return render(request, 'adminportal/admin_pengumuman.html', context)
+    return render(request, 'adminportal/admin_ubahpengumuman.html', context)
