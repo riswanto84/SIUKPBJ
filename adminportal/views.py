@@ -209,8 +209,17 @@ def ubah_berita(request, pk):
 @login_required(login_url='administrator')
 def tautan_aplikasi(request):
     tautan_aplikasi = LinkApp.objects.all().order_by('-id')
+    form = TautanForm()
+
+    if request.method == 'POST':
+        form = TautanForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Data berhasil disimpan')
+            return redirect('tautan_aplikasi')
 
     context = {
+        'form': form,
         'tautan': tautan_aplikasi,
     }
 
@@ -223,3 +232,39 @@ def delete_tautan(request, pk):
     tautan.delete()
     messages.info(request, 'Data berhasil dihapus')
     return redirect('delete_tautan')
+
+
+@login_required(login_url='administrator')
+def ubah_tautan(request, pk):
+    tautan = LinkApp.objects.get(id=pk)
+    form = TautanForm(instance=tautan)
+
+    if request.method == 'POST':
+        form = TautanForm(request.POST, request.FILES, instance=tautan)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Data berhasil diubah')
+            return redirect('tautan_aplikasi')
+
+    context = {'form': form}
+    return render(request, 'adminportal/admin_ubahtautan.html', context)
+
+
+@login_required(login_url='administrator')
+def admin_probis_sop(request):
+    admin_probis_sop = Probis.objects.all().order_by('-id')
+    form = TautanForm()
+
+    if request.method == 'POST':
+        form = TautanForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Data berhasil disimpan')
+            return redirect('tautan_aplikasi')
+
+    context = {
+        'form': form,
+        'admin_probis_sop': admin_probis_sop,
+    }
+
+    return render(request, 'adminportal/admin_probis_sop.html', context)

@@ -33,4 +33,8 @@ urlpatterns = [
     path('tautan_aplikasi/', views.tautan_aplikasi, name='tautan_aplikasi'),
     path('delete_tautan/<str:pk>',
          views.delete_tautan, name='delete_tautan'),
+    path('ubahtautan/<str:pk>', views.ubah_tautan, name='ubahtautan'),
+
+    # path untuk probis dan SOP
+    path('admin_probis_sop/', views.admin_probis_sop, name='admin_probis_sop'),
 ]

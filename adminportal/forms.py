@@ -49,3 +49,21 @@ class BeritaForm(ModelForm):
             'description': _('Isi Berita'),
             'image': _('File gambar'),
         }
+
+
+class TautanForm(ModelForm):
+    class Meta:
+        model = LinkApp
+        fields = '__all__'
+
+        labels = {
+            'title': _('Judul Tautan'),
+            'link': _('URL tautan'),
+            'thumbnailImage': _('File gambar (ukuran gambar 229x103 pixel)'),
+        }
+
+
+class ProbisSopForm(ModelForm):
+    class Meta:
+        model = Probis
+        fields = '__all__'
