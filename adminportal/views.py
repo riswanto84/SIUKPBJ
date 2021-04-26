@@ -142,3 +142,65 @@ def ubah_pengumuman(request, pk):
 
     context = {'form': form}
     return render(request, 'adminportal/admin_ubahpengumuman.html', context)
+
+
+@login_required(login_url='administrator')
+def admin_berita(request):
+    berita = Berita.objects.all().order_by('-id')
+    form = BeritaForm()
+
+    if request.method == 'POST':
+        form = BeritaForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Data berhasil disimpan')
+            return redirect('admin_berita')
+
+    context = {
+        'berita': berita,
+        'form': form,
+    }
+    return render(request, 'adminportal/admin_berita.html', context)
+
+
+@login_required(login_url='administrator')
+def lampirkan_file_berita(request, berita_id):
+    berita = Berita.objects.get(id=berita_id)
+    LampiranBeritaFormset = inlineformset_factory(
+        Berita, BeritaFile, fields=('files',), can_delete=False, extra=3)
+
+    if request.method == 'POST':
+        formset = LampiranBeritaFormset(
+            request.POST, request.FILES, instance=berita)
+        if formset.is_valid():
+            formset.save()
+            messages.info(request, 'Data berhasil disimpan')
+            return redirect('admin_berita')
+
+    formset = LampiranBeritaFormset(instance=berita)
+
+    return render(request, 'adminportal/lampirkan_file_berita.html', {'formset': formset})
+
+
+@login_required(login_url='administrator')
+def delete_berita(request, pk):
+    berita = Berita.objects.get(id=pk)
+    berita.delete()
+    messages.info(request, 'Data berhasil dihapus')
+    return redirect('admin_berita')
+
+
+@login_required(login_url='administrator')
+def ubah_berita(request, pk):
+    berita = Berita.objects.get(id=pk)
+    form = BeritaForm(instance=berita)
+
+    if request.method == 'POST':
+        form = BeritaForm(request.POST, request.FILES, instance=berita)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Data berhasil diubah')
+            return redirect('admin_berita')
+
+    context = {'form': form}
+    return render(request, 'adminportal/admin_ubahberita.html', context)

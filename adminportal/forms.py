@@ -4,6 +4,20 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 
 
+class UserAdminForm(ModelForm):
+    class Meta:
+        model = UserAdmin
+        fields = '__all__'
+        exclude = ['user']
+
+        labels = {
+            'nama': _('Nama Lengkap'),
+            'no_hp': _('Nomor HP'),
+            'email': _('Alamat Email'),
+            'profil_pic': _('Foto Profil'),
+        }
+
+
 class PengumumanForm(ModelForm):
     class Meta:
         model = Pengumuman
@@ -20,16 +34,18 @@ class PengumumanForm(ModelForm):
         }
 
 
-class UserAdminForm(ModelForm):
+class BeritaForm(ModelForm):
     class Meta:
-        model = UserAdmin
+        model = Berita
         fields = '__all__'
-        exclude = ['user']
+
+        widgets = {
+            'created_by': forms.HiddenInput(),
+            'created_date': forms.HiddenInput(),
+        }
 
         labels = {
-            'nama': _('Nama Lengkap'),
-            'no_hp': _('Nomor HP'),
-            'email': _('Alamat Email'),
-            'profil_pic': _('Foto Profil'),
-
+            'title': _('Judul Berita'),
+            'description': _('Isi Berita'),
+            'image': _('File gambar'),
         }
