@@ -10,13 +10,26 @@ class PengumumanForm(ModelForm):
         fields = ['title', 'description', 'image', 'created_by']
 
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'description': forms.Textarea(attrs={'class': 'form-control'}),
             'created_by': forms.HiddenInput(),
         }
 
         labels = {
-            'title': _('Judul'),
+            'title': _('Judul Pengumuman'),
             'description': _('Isi Pengumuman'),
             'image': _('File gambar'),
+        }
+
+
+class UserAdminForm(ModelForm):
+    class Meta:
+        model = UserAdmin
+        fields = '__all__'
+        exclude = ['user']
+
+        labels = {
+            'nama': _('Nama Lengkap'),
+            'no_hp': _('Nomor HP'),
+            'email': _('Alamat Email'),
+            'profil_pic': _('Foto Profil'),
+
         }

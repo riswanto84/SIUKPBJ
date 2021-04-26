@@ -6,6 +6,19 @@ from ckeditor.fields import RichTextField
 # Create your models here.
 
 
+class UserAdmin(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    nama = models.CharField(max_length=200)
+    no_hp = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    profil_pic = models.ImageField(
+        default="profile.png", blank=True, null=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.nama
+
+
 class Banner(models.Model):
     description = models.CharField(max_length=200, null=True, blank=True)
     picture = models.ImageField(null=True, blank=True)

@@ -14,6 +14,22 @@ from crispy_forms.helper import FormHelper
 # Create your views here.
 
 
+@login_required(login_url='administrator')
+def accountSettings(request):
+    user = request.user.useradmin
+    form = UserAdminForm(instance=user)
+    # print(form)
+
+    if request.method == 'POST':
+        form = UserAdminForm(request.POST, request.FILES, instance=user)
+        if form.is_valid:
+            form.save()
+            messages.info(request, 'Data berhasil diubah')
+
+    context = {'form': form}
+    return render(request, 'adminportal/account_settings.html', context)
+
+
 def login_page(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -69,8 +85,8 @@ def pengumuman(request):
 def admin_pengumuman(request):
 
     pengumuman = Pengumuman.objects.all().order_by('-id')
-
     form = PengumumanForm()
+
     if request.method == 'POST':
         form = PengumumanForm(request.POST, request.FILES)
         if form.is_valid():

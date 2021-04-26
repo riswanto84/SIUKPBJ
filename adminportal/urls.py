@@ -6,6 +6,7 @@ urlpatterns = [
     path('administrator/', views.login_page, name='administrator'),
     # path untuk logout
     path('logout/', views.logoutUser, name='logout'),
+    path('account/', views.accountSettings, name='account'),
 
     # path home admin
     path('home/', views.homeadmin, name='homeadmin'),
