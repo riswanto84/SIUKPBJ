@@ -61,7 +61,11 @@
                             {% for kontenberita in berita %}
                             <div class="col-lg-4">
                                 <h4 class="white"><a class="white" href="#">{{kontenberita.title}}</a></h4>
-                                <a href="{% url 'detil_berita' kontenberita.id %}"><img src="{{kontenberita.image.url}}" alt="{{kontenberita.title}}"/></a>
+                                {% if kontenberita.image %}
+                                <a href="{% url 'detil_berita' kontenberita.id %}">
+                                    <img src="{{ kontenberita.image.url }}" alt="{{ kontenberita.title }}"/>
+                                </a>
+                                {% endif %}
                                 <p class="text-justify"><br>{{kontenberita.description|safe|truncatechars:350}}&nbsp;
                                     <a href="{% url 'detil_berita' kontenberita.id %}"> lebih lanjut <i class="fa fa-caret-right"></i></a>
                                 </p>

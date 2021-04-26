@@ -204,3 +204,22 @@ def ubah_berita(request, pk):
 
     context = {'form': form}
     return render(request, 'adminportal/admin_ubahberita.html', context)
+
+
+@login_required(login_url='administrator')
+def tautan_aplikasi(request):
+    tautan_aplikasi = LinkApp.objects.all().order_by('-id')
+
+    context = {
+        'tautan': tautan_aplikasi,
+    }
+
+    return render(request, 'adminportal/tautan_aplikasi.html', context)
+
+
+@login_required(login_url='administrator')
+def delete_tautan(request, pk):
+    tautan = LinkApp.objects.get(id=pk)
+    tautan.delete()
+    messages.info(request, 'Data berhasil dihapus')
+    return redirect('delete_tautan')

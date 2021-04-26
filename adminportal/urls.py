@@ -28,4 +28,9 @@ urlpatterns = [
          views.delete_berita, name='delete_berita'),
     path('ubah_berita/<str:pk>',
          views.ubah_berita, name='ubah_berita'),
+
+    # path untuk tautan_aplikasi
+    path('tautan_aplikasi/', views.tautan_aplikasi, name='tautan_aplikasi'),
+    path('delete_tautan/<str:pk>',
+         views.delete_tautan, name='delete_tautan'),
 ]
