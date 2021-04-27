@@ -44,5 +44,12 @@ urlpatterns = [
     path('ubah_admin_sop/<str:pk>', views.ubah_admin_sop, name='ubah_admin_sop'),
 
     # path untuk standar dokumen
-    path('standar_dokumen/', views.standar_dokumen, name='standar_dokumen'),
+    path('admin_standar_dokumen/', views.admin_standar_dokumen,
+         name='admin_standar_dokumen'),
+    path('admin_ubah_dokumen/<str:pk>',
+         views.ubah_admin_dokumen, name='ubah_admin_dokumen'),
+    path('admin_ubah_sdf/<str:pk>',
+         views.ubah_admin_stddokumen, name='admin_ubah_sdf'),
+    path('admin_delete_dokumen/<str:pk>',
+         views.delete_admin_dokumen, name='delete_admin_dokumen'),
 ]

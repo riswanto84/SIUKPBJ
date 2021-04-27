@@ -85,3 +85,14 @@ class SopForm(ModelForm):
             'description': _('Deskripsi SOP'),
             'file': _('File SOP (format pdf)'),
         }
+
+
+class StandarDokumenForm(ModelForm):
+    class Meta:
+        model = StandarDokumen
+        fields = '__all__'
+
+        labels = {
+            'title': _('Judul Standar Dokumen'),
+            'description': _('Deskripsi'),
+        }

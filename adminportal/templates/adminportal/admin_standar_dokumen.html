@@ -12,12 +12,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Proses Bisnis dan SOP</h1>
+            <h1>Standar Dokumen</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{% url 'homeadmin' %}">Home</a></li>
-              <li class="breadcrumb-item active">Proses Bisnis & SOP</li>
+              <li class="breadcrumb-item active">Standar Dokumen</li>
             </ol>
           </div>
         </div>
@@ -51,7 +51,7 @@
                     <div class="modal-dialog modal-xl" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Tambah Proses Bisnis dan SOP</h5>
+                          <h5 class="modal-title" id="exampleModalLabel">Tambah Standar Dokumen</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -79,33 +79,28 @@
                   <thead>
                   <tr>
                     <th class="text-center">No</th>
-                    <th class="text-center">Proses Bisnis</th>
-                    <th class="text-center">File SOP</th>
-                    <th class="text-center">Ubah SOP</th>
-                    <th class="text-center">Ubah Probis</th>
+                    <th class="text-center">Nama Dokumen</th>
+                    <th class="text-center">File Dokumen</th>
+                    <th class="text-center">Ubah Dokumen</th>
+                    <th class="text-center">Lampiran File</th>
                     <th class="text-center">Hapus</th>
                   </tr>
                   </thead>
                   <tbody>
-                  {% for i in admin_probis_sop %}
+                  {% for i in standar_dokumen %}
                   <tr>
                     <td class="text-right">{{forloop.counter}}.</td>
-                    <td>
-                      {{i.title}} <br>
-                      <a href="{{i.file.url}}" class="ion ion-document-text"> unduh file</a>
-                    </td>
+                    <td>{{i.title}}</td>
                     <td class="text-left">
-                      <ul class="list-group list-unstyled">
-                        {% for sop in i.sop_set.all %}
-                          
-                            <li><a href="{{sop.file.url}}" target="_blank">{{forloop.counter}}. {{sop.file|cut:"files/"}}</a></li>
-                          
-                        {% endfor %}
-                      </ul>
+                        <ul class="list-group list-unstyled">
+                            {% for dokumen in i.sdf_set.all %}
+                            <li><a href="{{dokumen.file.url}}" target="_blank">{{forloop.counter}}. {{dokumen.file|cut:"files/"}}</a></li>
+                            {% endfor %}
+                        </ul>
                     </td>
-                    <td class="text-center text-success"><a class="ion ion-edit" href="{% url 'ubah_admin_sop' i.id %}"> ubah</a></td>
-                    <td class="text-center"><a class="ion ion-edit text-success" href="{% url 'admin_ubah_probis_sop' i.id %}"> ubah</a></td>
-                    <td class="text-center"><a class="ion ion-android-delete text-danger" href="{% url 'delete_probis_sop' i.id %}" alt="Hapus Data" onclick="return confirm('Lanjutkan menghapus data?');"> hapus</a></td>
+                    <td><a class="ion ion-edit text-blue" href="{% url 'ubah_admin_dokumen' i.id %}"> ubah</a></td>
+                    <td class="text-center"><a class="ion ion-edit text-success" href="{% url 'admin_ubah_sdf' i.id %}"> ubah</a></td>
+                    <td class="text-center"><a class="ion ion-android-delete text-danger" href="{% url 'delete_admin_dokumen' i.id %}" alt="Hapus Data" onclick="return confirm('Lanjutkan menghapus data?');"> hapus</a></td>
                   </tr>
                   {% endfor %}
                   </tfoot>

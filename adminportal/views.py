@@ -328,7 +328,68 @@ def ubah_admin_sop(request, pk):
 
 
 @login_required(login_url='administrator')
-def standar_dokumen(request):
+def admin_standar_dokumen(request):
     standar_dokumen = StandarDokumen.objects.all().order_by('-id')
 
-    return HttpResponse('standar dokumen')
+    form = StandarDokumenForm()
+
+    if request.method == 'POST':
+        form = StandarDokumenForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Data berhasil disimpan')
+            return redirect('admin_standar_dokumen')
+
+    context = {'standar_dokumen': standar_dokumen, 'form': form}
+    return render(request, 'adminportal/admin_standar_dokumen.html', context)
+
+
+@login_required(login_url='administrator')
+def ubah_admin_dokumen(request, pk):
+    judul1 = "Standar Dokumen"
+    judul2 = "Standar Dokumen"
+    dokumen = StandarDokumen.objects.get(id=pk)
+    form = StandarDokumenForm(instance=dokumen)
+
+    if request.method == 'POST':
+        form = StandarDokumenForm(request.POST, request.FILES,
+                                  instance=dokumen)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Data berhasil diubah')
+            return redirect('admin_standar_dokumen')
+
+    context = {'form': form, 'judul1': judul1, 'judul2': judul2}
+    return render(request, 'adminportal/admin_ubah.html', context)
+
+
+@login_required(login_url='administrator')
+def ubah_admin_stddokumen(request, pk):
+    judul1 = "Standar Dokumen"
+    judul2 = "Ubah Standar Dokumen"
+
+    dokumen = StandarDokumen.objects.get(id=pk)
+
+    LampiranStdDokumenFormset = inlineformset_factory(
+        StandarDokumen, SDF, fields=('title', 'file', ), can_delete=False, extra=1)
+
+    if request.method == 'POST':
+        form = LampiranStdDokumenFormset(
+            request.POST, request.FILES, instance=dokumen)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Data berhasil disimpan')
+            return redirect('admin_standar_dokumen')
+
+    form = LampiranStdDokumenFormset(instance=dokumen)
+
+    context = {'form': form, 'judul1': judul1, 'judul2': judul2}
+    return render(request, 'adminportal/admin_ubah.html', context)
+
+
+@login_required(login_url='administrator')
+def delete_admin_dokumen(request, pk):
+    dokumen = StandarDokumen.objects.get(id=pk)
+    dokumen.delete()
+    messages.info(request, 'Data berhasil dihapus')
+    return redirect('admin_standar_dokumen')

@@ -50,7 +50,7 @@
                                         <tr>
                                             <td>
                                                 {{probis.title}}
-                                                <br><a href="{{probis.file.url}}" class="fa fa-file-pdf-o"> File Probis</a>
+                                                <br><a href="{{probis.file.url}}"> {{probis.file|cut:"files/"}}</a>
                                             </td>
                                             <td>{{probis.description|safe}}
                                                 
