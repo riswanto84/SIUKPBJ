@@ -279,6 +279,7 @@ def delete_probis_sop(request, pk):
 
 
 def ubah_admin_probis_sop(request, pk):
+    judul = "Ubah Proses Bisnis"
     probis = Probis.objects.get(id=pk)
     form = ProbisSopForm(instance=probis)
 
@@ -290,15 +291,16 @@ def ubah_admin_probis_sop(request, pk):
             messages.info(request, 'Data berhasil diubah')
             return redirect('admin_probis_sop')
 
-    context = {'form': form}
+    context = {'form': form, 'judul': judul}
     return render(request, 'adminportal/admin_ubah_probis_sop.html', context)
 
 
 def ubah_admin_sop(request, pk):
+    judul = "Ubah SOP"
     probis = Probis.objects.get(id=pk)
 
     LampiranSOPFormset = inlineformset_factory(
-        Probis, SOP, fields=('file',), can_delete=False, extra=3)
+        Probis, SOP, fields=('title', 'description', 'file', ), can_delete=False, extra=1)
 
     if request.method == 'POST':
         form = LampiranSOPFormset(
@@ -310,5 +312,5 @@ def ubah_admin_sop(request, pk):
 
     form = LampiranSOPFormset(instance=probis)
 
-    context = {'form': form, }
+    context = {'form': form, 'judul': judul}
     return render(request, 'adminportal/admin_ubah_probis_sop.html', context)
