@@ -51,7 +51,7 @@
                     <div class="modal-dialog modal-xl" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Tambah Pengumuman</h5>
+                          <h5 class="modal-title" id="exampleModalLabel">Tambah Proses Bisnis</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -79,10 +79,10 @@
                   <thead>
                   <tr>
                     <th class="text-center">No</th>
-                    <th class="text-center">Judul Proses Bisnis</th>
-                    <th class="text-center">Detail</th>
-                    <th class="text-center">File Tautan</th>
-                    <th class="text-center">Ubah</th>
+                    <th class="text-center">Proses Bisnis</th>
+                    <th class="text-center">File SOP</th>
+                    <th class="text-center">Ubah SOP</th>
+                    <th class="text-center">Ubah Probis</th>
                     <th class="text-center">Hapus</th>
                   </tr>
                   </thead>
@@ -90,11 +90,22 @@
                   {% for i in admin_probis_sop %}
                   <tr>
                     <td class="text-right">{{forloop.counter}}.</td>
-                    <td>{{i.title}}</td>
-                    <td class="text-center"><a class="ion ion-eye text-danger" href="#"> detail</a></td>
-                    <td class="text-center text-success"><a class="ion ion-document-text" href="{% url 'admin_lampirkan_file' i.id %}"> lampirkan file</a></td>
-                    <td class="text-center"><a class="ion ion-edit text-success" href="{% url 'ubah_pengumuman' i.id %}"> ubah</a></td>
-                    <td class="text-center"><a class="ion ion-android-delete text-danger" href="{% url 'delete_pengumuman' i.id %}" onclick="return confirm('Lanjutkan menghapus data?');"> hapus</a></td>
+                    <td>
+                      {{i.title}} <br>
+                      <a href="{{i.file.url}}" class="ion ion-document-text"> File Probis</a>
+                    </td>
+                    <td class="text-center">
+                      <ul class="list-group list-unstyled">
+                        {% for sop in i.sop_set.all %}
+                          
+                            <li><a href="{{sop.file.url}}" target="_blank" class="ion-document text-cyan"> SOP {{forloop.counter}}</a></li>
+                          
+                        {% endfor %}
+                      </ul>
+                    </td>
+                    <td class="text-center text-success"><a class="ion ion-edit" href="#"> </a></td>
+                    <td class="text-center"><a class="ion ion-edit text-success" href="{% url 'admin_ubah_probis_sop' i.id %}"> </a></td>
+                    <td class="text-center"><a class="ion ion-android-delete text-danger" href="{% url 'delete_pengumuman' i.id %}" alt="Hapus Data" onclick="return confirm('Lanjutkan menghapus data?');"> </a></td>
                   </tr>
                   {% endfor %}
                   </tfoot>

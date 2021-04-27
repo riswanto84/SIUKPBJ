@@ -67,3 +67,21 @@ class ProbisSopForm(ModelForm):
     class Meta:
         model = Probis
         fields = '__all__'
+
+        labels = {
+            'title': _('Judul Proses Bisnis'),
+            'description': _('Deskripsi Proses Bisnis'),
+            'file': _('File Proses Bisnis (format pdf)'),
+        }
+
+
+class SopForm(ModelForm):
+    class Meta:
+        model = SOP
+        fields = '__all__'
+
+        labels = {
+            'title': _('Judul SOP'),
+            'description': _('Deskripsi SOP'),
+            'file': _('File SOP (format pdf)'),
+        }

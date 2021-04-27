@@ -37,4 +37,8 @@ urlpatterns = [
 
     # path untuk probis dan SOP
     path('admin_probis_sop/', views.admin_probis_sop, name='admin_probis_sop'),
+    path('admin_ubah_probis_sop/<str:pk>',
+         views.ubah_admin_probis_sop, name='admin_ubah_probis_sop'),
+
+
 ]

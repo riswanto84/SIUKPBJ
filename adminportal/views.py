@@ -253,14 +253,14 @@ def ubah_tautan(request, pk):
 @login_required(login_url='administrator')
 def admin_probis_sop(request):
     admin_probis_sop = Probis.objects.all().order_by('-id')
-    form = TautanForm()
+    form = ProbisSopForm()
 
     if request.method == 'POST':
-        form = TautanForm(request.POST, request.FILES)
+        form = ProbisSopForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             messages.info(request, 'Data berhasil disimpan')
-            return redirect('tautan_aplikasi')
+            return redirect('admin_probis_sop')
 
     context = {
         'form': form,
@@ -268,3 +268,20 @@ def admin_probis_sop(request):
     }
 
     return render(request, 'adminportal/admin_probis_sop.html', context)
+
+
+@login_required(login_url='administrator')
+def ubah_admin_probis_sop(request, pk):
+    admin_probis_sop = Probis.objects.get(id=pk)
+    form = ProbisSopForm(instance=admin_probis_sop)
+
+    if request.method == 'POST':
+        form = ProbisSopForm(request.POST, request.FILES,
+                             instance=admin_probis_sop)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Data berhasil diubah')
+            return redirect('admin_probis_sop')
+
+    context = {'form': form}
+    return render(request, 'adminportal/admin_ubah_probis_sop.html', context)

@@ -48,8 +48,13 @@
                                 <tbody>
                                     {% for probis in prosesbisnis %}
                                         <tr>
-                                            <td>{{probis.title}}</td>
-                                            <td>{{probis.description}}</td>
+                                            <td>
+                                                {{probis.title}}
+                                                <br><a href="{{probis.file.url}}" class="fa fa-file-pdf-o"> File Probis</a>
+                                            </td>
+                                            <td>{{probis.description|safe}}
+                                                
+                                            </td>
                                             <td>
                                                 <ul style="list-style-type: none;">
                                                     {% for i in probis.sop_set.all %}
