@@ -51,7 +51,7 @@
                     <div class="modal-dialog modal-xl" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Tambah Proses Bisnis</h5>
+                          <h5 class="modal-title" id="exampleModalLabel">Tambah Proses Bisnis dan SOP</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -103,7 +103,7 @@
                         {% endfor %}
                       </ul>
                     </td>
-                    <td class="text-center text-success"><a class="ion ion-edit" href="#"> </a></td>
+                    <td class="text-center text-success"><a class="ion ion-edit" href="{% url 'ubah_admin_sop' i.id %}"> </a></td>
                     <td class="text-center"><a class="ion ion-edit text-success" href="{% url 'admin_ubah_probis_sop' i.id %}"> </a></td>
                     <td class="text-center"><a class="ion ion-android-delete text-danger" href="{% url 'delete_probis_sop' i.id %}" alt="Hapus Data" onclick="return confirm('Lanjutkan menghapus data?');"> </a></td>
                   </tr>

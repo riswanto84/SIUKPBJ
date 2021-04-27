@@ -39,7 +39,9 @@ urlpatterns = [
     path('admin_probis_sop/', views.admin_probis_sop, name='admin_probis_sop'),
     path('admin_ubah_probis_sop/<str:pk>',
          views.ubah_admin_probis_sop, name='admin_ubah_probis_sop'),
-    path('delete_probis/<str:pk>', views.delete_probis_sop, name='delete_probis_sop')
+    path('delete_probis/<str:pk>', views.delete_probis_sop,
+         name='delete_probis_sop'),
+    path('ubah_admin_sop/<str:pk>', views.ubah_admin_sop, name='ubah_admin_sop'),
 
 
 ]

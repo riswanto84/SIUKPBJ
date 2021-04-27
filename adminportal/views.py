@@ -279,16 +279,36 @@ def delete_probis_sop(request, pk):
 
 
 def ubah_admin_probis_sop(request, pk):
-    admin_probis_sop = Probis.objects.get(id=pk)
-    form = ProbisSopForm(instance=admin_probis_sop)
+    probis = Probis.objects.get(id=pk)
+    form = ProbisSopForm(instance=probis)
 
     if request.method == 'POST':
         form = ProbisSopForm(request.POST, request.FILES,
-                             instance=admin_probis_sop)
+                             instance=probis)
         if form.is_valid():
             form.save()
             messages.info(request, 'Data berhasil diubah')
             return redirect('admin_probis_sop')
 
     context = {'form': form}
+    return render(request, 'adminportal/admin_ubah_probis_sop.html', context)
+
+
+def ubah_admin_sop(request, pk):
+    probis = Probis.objects.get(id=pk)
+
+    LampiranSOPFormset = inlineformset_factory(
+        Probis, SOP, fields=('file',), can_delete=False, extra=3)
+
+    if request.method == 'POST':
+        form = LampiranSOPFormset(
+            request.POST, request.FILES, instance=probis)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Data berhasil disimpan')
+            return redirect('admin_probis_sop')
+
+    form = LampiranSOPFormset(instance=probis)
+
+    context = {'form': form, }
     return render(request, 'adminportal/admin_ubah_probis_sop.html', context)
