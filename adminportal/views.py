@@ -271,6 +271,13 @@ def admin_probis_sop(request):
 
 
 @login_required(login_url='administrator')
+def delete_probis_sop(request, pk):
+    tautan = Probis.objects.get(id=pk)
+    tautan.delete()
+    messages.info(request, 'Data berhasil dihapus')
+    return redirect('admin_probis_sop')
+
+
 def ubah_admin_probis_sop(request, pk):
     admin_probis_sop = Probis.objects.get(id=pk)
     form = ProbisSopForm(instance=admin_probis_sop)
