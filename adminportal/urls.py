@@ -43,5 +43,6 @@ urlpatterns = [
          name='delete_probis_sop'),
     path('ubah_admin_sop/<str:pk>', views.ubah_admin_sop, name='ubah_admin_sop'),
 
-
+    # path untuk standar dokumen
+    path('standar_dokumen/', views.standar_dokumen, name='standar_dokumen'),
 ]

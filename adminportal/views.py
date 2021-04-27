@@ -130,6 +130,9 @@ def delete_pengumuman(request, pk):
 
 @login_required(login_url='administrator')
 def ubah_pengumuman(request, pk):
+    judul1 = "Pengumuman"
+    judul2 = "Ubah Pengumuman"
+
     pengumuman = Pengumuman.objects.get(id=pk)
     form = PengumumanForm(instance=pengumuman)
 
@@ -140,8 +143,8 @@ def ubah_pengumuman(request, pk):
             messages.info(request, 'Data berhasil diubah')
             return redirect('admin_pengumuman')
 
-    context = {'form': form}
-    return render(request, 'adminportal/admin_ubahpengumuman.html', context)
+    context = {'form': form, 'judul1': judul1, 'judul2': judul2}
+    return render(request, 'adminportal/admin_ubah.html', context)
 
 
 @login_required(login_url='administrator')
@@ -192,6 +195,8 @@ def delete_berita(request, pk):
 
 @login_required(login_url='administrator')
 def ubah_berita(request, pk):
+    judul1 = "Berita"
+    judul2 = "Ubah Berita"
     berita = Berita.objects.get(id=pk)
     form = BeritaForm(instance=berita)
 
@@ -202,8 +207,8 @@ def ubah_berita(request, pk):
             messages.info(request, 'Data berhasil diubah')
             return redirect('admin_berita')
 
-    context = {'form': form}
-    return render(request, 'adminportal/admin_ubahberita.html', context)
+    context = {'form': form, 'judul1': judul1, 'judul2': judul2}
+    return render(request, 'adminportal/admin_ubah.html', context)
 
 
 @login_required(login_url='administrator')
@@ -236,6 +241,8 @@ def delete_tautan(request, pk):
 
 @login_required(login_url='administrator')
 def ubah_tautan(request, pk):
+    judul1 = "Tautan"
+    judul2 = "Ubah Tautan"
     tautan = LinkApp.objects.get(id=pk)
     form = TautanForm(instance=tautan)
 
@@ -246,8 +253,8 @@ def ubah_tautan(request, pk):
             messages.info(request, 'Data berhasil diubah')
             return redirect('tautan_aplikasi')
 
-    context = {'form': form}
-    return render(request, 'adminportal/admin_ubahtautan.html', context)
+    context = {'form': form, 'judul1': judul1, 'judul2': judul2}
+    return render(request, 'adminportal/admin_ubah.html', context)
 
 
 @login_required(login_url='administrator')
@@ -278,8 +285,10 @@ def delete_probis_sop(request, pk):
     return redirect('admin_probis_sop')
 
 
+@login_required(login_url='administrator')
 def ubah_admin_probis_sop(request, pk):
-    judul = "Ubah Proses Bisnis"
+    judul1 = "Proses Bisnis & SOP"
+    judul2 = "Ubah Proses Bisnis"
     probis = Probis.objects.get(id=pk)
     form = ProbisSopForm(instance=probis)
 
@@ -291,12 +300,14 @@ def ubah_admin_probis_sop(request, pk):
             messages.info(request, 'Data berhasil diubah')
             return redirect('admin_probis_sop')
 
-    context = {'form': form, 'judul': judul}
-    return render(request, 'adminportal/admin_ubah_probis_sop.html', context)
+    context = {'form': form, 'judul1': judul1, 'judul2': judul2}
+    return render(request, 'adminportal/admin_ubah.html', context)
 
 
+@login_required(login_url='administrator')
 def ubah_admin_sop(request, pk):
-    judul = "Ubah SOP"
+    judul1 = "Proses Bisnis & SOP"
+    judul2 = "Ubah SOP"
     probis = Probis.objects.get(id=pk)
 
     LampiranSOPFormset = inlineformset_factory(
@@ -312,5 +323,12 @@ def ubah_admin_sop(request, pk):
 
     form = LampiranSOPFormset(instance=probis)
 
-    context = {'form': form, 'judul': judul}
-    return render(request, 'adminportal/admin_ubah_probis_sop.html', context)
+    context = {'form': form, 'judul1': judul1, 'judul2': judul2}
+    return render(request, 'adminportal/admin_ubah.html', context)
+
+
+@login_required(login_url='administrator')
+def standar_dokumen(request):
+    standar_dokumen = StandarDokumen.objects.all().order_by('-id')
+
+    return HttpResponse('standar dokumen')
