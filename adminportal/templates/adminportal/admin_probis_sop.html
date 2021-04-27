@@ -105,7 +105,7 @@
                     </td>
                     <td class="text-center text-success"><a class="ion ion-edit" href="#"> </a></td>
                     <td class="text-center"><a class="ion ion-edit text-success" href="{% url 'admin_ubah_probis_sop' i.id %}"> </a></td>
-                    <td class="text-center"><a class="ion ion-android-delete text-danger" href="{% url 'delete_pengumuman' i.id %}" alt="Hapus Data" onclick="return confirm('Lanjutkan menghapus data?');"> </a></td>
+                    <td class="text-center"><a class="ion ion-android-delete text-danger" href="{% url 'delete_probis_sop' i.id %}" alt="Hapus Data" onclick="return confirm('Lanjutkan menghapus data?');"> </a></td>
                   </tr>
                   {% endfor %}
                   </tfoot>
