@@ -1,0 +1,118 @@
+{% extends 'adminportal/main.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %} 
+
+<!-- Content Section -->
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Banner Web</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{% url 'homeadmin' %}">Home</a></li>
+              <li class="breadcrumb-item active">Banner web</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <!-- /.card-header -->
+              <div class="card-body">
+                  
+                      {% for message in messages %}
+                      <div class="alert alert-default-success alert-dismissible fade show" role="alert">
+                        <strong>{{message}}</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      {% endfor %}
+                  <div>
+                      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">+ Tambah</button>
+                      <hr>
+                  </div>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Tambah Banner Web</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+
+                            <form method="POST" enctype="multipart/form-data" action="">
+                                {% csrf_token %}
+                                {{form.media}}
+                                {{form|crispy}}
+                                <input type="hidden" id="created_by" name="created_by" value="{{user.id}}">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                          <input type="submit" name="Submit" value="Simpan" class="btn btn-primary">
+                            </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Modal -->
+
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th class="text-center">No</th>
+                    <th class="text-center">Deskripsi</th>
+                    <th class="text-center">File Gambar</th>
+                    <th class="text-center">Ubah</th>
+                    <th class="text-center">Hapus</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for i in banner %}
+                  <tr>
+                    <td class="text-right">{{forloop.counter}}.</td>
+                    <td class="text-center">{{i.description}}</td>
+                    <td class="text-center"><a class="ion ion-android-image" href="{{i.picture.url}}" target="_blank"> File Image</a></td>
+                    <td class="text-center"><a class="ion ion-edit text-success" href="{% url 'ubah_admin_banner' i.id %}"> ubah</a></td>
+                    <td class="text-center"><a class="ion ion-android-delete text-danger" href="{% url 'hapus_admin_banner' i.id %}" onclick="return confirm('Lanjutkan menghapus data?');"> hapus</a></td>
+                  </tr>
+                  {% endfor %}
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+<!-- end of Content Section -->
+
+{% endblock %}

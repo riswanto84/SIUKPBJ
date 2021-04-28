@@ -393,3 +393,83 @@ def delete_admin_dokumen(request, pk):
     dokumen.delete()
     messages.info(request, 'Data berhasil dihapus')
     return redirect('admin_standar_dokumen')
+
+@login_required(login_url='administrator')
+def admin_regulasi(request):
+    regulasi = Regulasi.objects.all().order_by('-id')
+    form = RegulasiForm()
+
+    if request.method == 'POST':
+        form = RegulasiForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Data berhasil disimpan')
+            return redirect('admin_regulasi')
+
+    context = {'regulasi': regulasi, 'form': form}
+    return render(request, 'adminportal/admin_regulasi.html', context)
+
+@login_required(login_url='administrator')
+def ubah_admin_regulasi(request, pk):
+    judul1 = "Regulasi"
+    judul2 = "Ubah Regulasi"
+
+    regulasi = Regulasi.objects.get(id=pk)
+    form = RegulasiForm(instance=regulasi)
+
+    if request.method == 'POST':
+        form = RegulasiForm(request.POST, request.FILES,instance=regulasi)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Data berhasil diubah')
+            return redirect('admin_regulasi')
+
+    context = {'form': form, 'judul1': judul1, 'judul2': judul2}
+    return render(request, 'adminportal/admin_ubah.html', context)
+
+@login_required(login_url='administrator')
+def hapus_admin_regulasi(request, pk):
+    regulasi = Regulasi.objects.get(id=pk)
+    regulasi.delete()
+    messages.info(request, 'Data berhasil dihapus')
+    return redirect('admin_regulasi')
+
+@login_required(login_url='administrator')
+def admin_banner(request):
+    banner = Banner.objects.all().order_by('-id')
+    form = BannerForm()
+
+    if request.method == 'POST':
+        form = BannerForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Data berhasil disimpan')
+            return redirect('admin_banner')
+
+    context = {'banner': banner, 'form': form}
+    return render(request, 'adminportal/admin_banner.html', context)
+
+@login_required(login_url='administrator')
+def ubah_admin_banner(request, pk):
+    judul1 = "Banner"
+    judul2 = "Ubah Banner"
+
+    banner = Banner.objects.get(id=pk)
+    form = BannerForm(instance=banner)
+
+    if request.method == 'POST':
+        form = BannerForm(request.POST, request.FILES,instance=banner)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Data berhasil diubah')
+            return redirect('admin_banner')
+
+    context = {'form': form, 'judul1': judul1, 'judul2': judul2}
+    return render(request, 'adminportal/admin_ubah.html', context)
+
+@login_required(login_url='administrator')
+def hapus_admin_banner(request, pk):
+    banner = Banner.objects.get(id=pk)
+    banner.delete()
+    messages.info(request, 'Data berhasil dihapus')
+    return redirect('admin_banner')

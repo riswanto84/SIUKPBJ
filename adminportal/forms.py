@@ -96,3 +96,22 @@ class StandarDokumenForm(ModelForm):
             'title': _('Judul Standar Dokumen'),
             'description': _('Deskripsi'),
         }
+
+class RegulasiForm(ModelForm):
+    class Meta:
+        model = Regulasi
+        fields = '__all__'
+
+class BannerForm(ModelForm):
+    class Meta:
+        model = Banner
+        fields = '__all__'
+
+        widgets = {
+            'created_by': forms.HiddenInput(),
+        }
+
+        labels = {
+            'description': _('Deskripsi'),
+            'picture': _('File gambar'),
+        }

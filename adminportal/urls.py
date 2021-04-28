@@ -52,4 +52,15 @@ urlpatterns = [
          views.ubah_admin_stddokumen, name='admin_ubah_sdf'),
     path('admin_delete_dokumen/<str:pk>',
          views.delete_admin_dokumen, name='delete_admin_dokumen'),
+
+     # path untuk standar dokumen
+    path('admin_regulasi/', views.admin_regulasi,
+         name='admin_regulasi'),
+    path('ubah_admin_regulasi/<str:pk>', views.ubah_admin_regulasi, name='ubah_admin_regulasi'),     
+    path('hapus_admin_regulasi/<str:pk>', views.hapus_admin_regulasi, name='hapus_admin_regulasi'),
+
+     #path untuk banner
+     path('admin_banner/', views.admin_banner,name='admin_banner'),
+     path('ubah_admin_banner/<str:pk>', views.ubah_admin_banner, name='ubah_admin_banner'),
+     path('hapus_admin_banner/<str:pk>', views.hapus_admin_banner, name='hapus_admin_banner'),
 ]
