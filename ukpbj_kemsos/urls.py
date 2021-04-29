@@ -23,7 +23,7 @@ from django.conf import settings
 urlpatterns = [
     path('djangoadmin/', admin.site.urls),
     path('', include('portal.urls')),
-    path('admin/', include('adminportal.urls')),
+    path('', include('adminportal.urls')),
 ]
 
 # SETTING URL PATTERN
